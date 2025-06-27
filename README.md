@@ -1,47 +1,40 @@
-Features
--Listens for incoming connections on port 2222
--Logs IP, commands, and connection data with timestamps
--Detects sudo/su privilege escalation attempts
--Performs Geo-IP lookups using MaxMind GeoLite2 database
--Real-time log viewer in the GUI
--Daily log rotation and CSV export support
+# Python SSH Honeypot
 
-How It Works
--The honeypot starts a TCP listener and waits for client connections
--Each connection is logged and processed in a separate thread
--Commands are logged, and suspicious actions are flagged
--Geo-IP data is collected from the attacker's IP address
--Logs are saved in a daily file and can be exported to CSV
+A lightweight Python honeypot that listens for incoming connections on port 2222, logs connection data and commands with timestamps, detects privilege escalation attempts, and performs Geo-IP lookups. Includes a real-time GUI log viewer and supports daily log rotation with CSV export.
 
-Requirements
-Python 3.x
+## Features
+- Listens on TCP port 2222 for incoming connections
+- Logs IP addresses, commands, and connection details with timestamps
+- Detects sudo and su privilege escalation attempts
+- Performs Geo-IP lookups using MaxMind GeoLite2 database
+- Real-time log viewer GUI with start/stop controls
+- Daily log rotation and CSV export support
 
-tkinter (standard in most Python distributions)
+## How It Works
+- Starts a TCP listener to accept client connections
+- Logs each connection and processes it in a separate thread
+- Flags suspicious commands and privilege escalations
+- Retrieves Geo-IP data for connecting IP addresses
+- Saves logs daily with option to export to CSV
 
-geoip2
-To install dependencies, run:
-pip install geoip2
+## Requirements
+- Python 3.x
+- tkinter (usually included with Python)
+- geoip2 library (`pip install geoip2`)
+- MaxMind GeoLite2-City.mmdb database file placed in the script directory
 
-You will also need the GeoLite2-City.mmdb database file from MaxMind placed in the same directory.
-
-Usage
+## Usage
 Run the script:
-python Honeypot.py
 
 Use the GUI to:
+- Start the honeypot listener
+- View real-time logs
+- Stop the honeypot and export logs to CSV
 
-Start the honeypot listener
+## Notes
+- Requires administrative privileges to bind ports and log properly
+- Intended for use on isolated or authorized test networks only
+- Not a full SSH server implementation; designed for deception and data collection
 
-View real-time logs
-
-Stop the honeypot and export logs to CSV
-
-Notes
-Run with administrative privileges to ensure binding to ports and logging
-
-Use only on isolated or authorized testing networks
-
-Not a full SSH implementation — intended for basic deception and data gathering
-
-License
-This project is open-source and available under the MIT License.
+## License
+MIT License
